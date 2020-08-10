@@ -18,13 +18,14 @@ Another use case might be to create a guest interface to your home wifi.  You ca
 side with your wifi particulars, then configure the access point with a password you can give out to your
 guests.  When the party's over, change the access point password.
 
-## /etc/network/interfaces.d/ap
+## /etc/dhcpcd.conf
 
-    allow-hotplug uap0
-    auto uap0
-    iface uap0 inet static
-        address 10.3.141.1
-        netmask 255.255.255.0
+Add the following lines at the end of the file
+
+    # RaspAP uap0 configuration
+	interface uap0
+	static ip_address=10.3.141.1/24
+	nohook wpa_supplicant
 
 ## /etc/udev/rules.d/90-wireless.rules 
 
